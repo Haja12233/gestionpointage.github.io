@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Employés - Refrigepeche OUEST</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">
+                    <img src="./Logo.jpg" alt="Logo Refrigepeche OUEST">
+                </div>
+                <h2>Refrigepeche OUEST</h2>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="accueille.html" class="menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>ACCUEILLE</span>
+                </a>
+                <a href="present.html" class="menu-item">
+                    <i class="fas fa-user-check"></i>
+                    <span>PRESENT</span>
+                </a>
+                <a href="absent.html" class="menu-item">
+                    <i class="fas fa-user-times"></i>
+                    <span>ABSENT</span>
+                </a>
+                <a href="sortie.html" class="menu-item">
+                    <i class="fas fa-door-open"></i>
+                    <span>SORTIE</span>
+                </a>
+                <a href="HeureSup.html" class="menu-item">
+                    <i class="fas fa-clock"></i>
+                    <span>HEURE SUP</span>
+                </a>
+                <!-- NOUVELLE OPTION RETARD -->
+                <a href="retard.html" class="menu-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>RETARD</span>
+                </a>
+                <a href="employer.html" class="menu-item active">
+                    <i class="fas fa-users"></i>
+                    <span>EMPLOYER</span>
+                </a>
+                <a href="parametre.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>PARAMETRE</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="./photo.jpg" alt="Photo utilisateur">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Sarobidy</span>
+                        <span class="user-role">Administrateur</span>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Liste des Employés</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Ajouter
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Exporter
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Département</th>
+                            <th>Poste</th>
+                            <th>Date d'embauche</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EMP001</td>
+                            <td>Dupont</td>
+                            <td>Jean</td>
+                            <td>Production</td>
+                            <td>Ouvrier</td>
+                            <td>15/03/2020</td>
+                            <td><span class="status present">Actif</span></td>
+                            <td>
+                                <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP002</td>
+                            <td>Martin</td>
+                            <td>Marie</td>
+                            <td>Logistique</td>
+                            <td>Chauffeur</td>
+                            <td>22/06/2019</td>
+                            <td><span class="status absent">Inactif</span></td>
+                            <td>
+                                <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP003</td>
+                            <td>Bernard</td>
+                            <td>Pierre</td>
+                            <td>Administration</td>
+                            <td>Comptable</td>
+                            <td>10/01/2021</td>
+                            <td><span class="status present">Actif</span></td>
+                            <td>
+                                <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP004</td>
+                            <td>Thomas</td>
+                            <td>Sophie</td>
+                            <td>Qualité</td>
+                            <td>Technicienne</td>
+                            <td>05/09/2022</td>
+                            <td><span class="status present">Actif</span></td>
+                            <td>
+                                <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EMP005</td>
+                            <td>Robert</td>
+                            <td>Luc</td>
+                            <td>Maintenance</td>
+                            <td>Technicien</td>
+                            <td>18/11/2018</td>
+                            <td><span class="status present">Actif</span></td>
+                            <td>
+                                <button class="btn-action"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigepeche OUEST - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Bouton menu mobile -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Overlay pour mobile -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    
+    <!-- Container des notifications de pointage -->
+    <div id="pointageNotifications" class="pointage-notifications"></div>
+    
+    <!-- Modal ChatBox -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Chat avec l'Administrateur</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="message admin-message">
+                        <div class="message-content">
+                            <strong>Administrateur:</strong> Bonjour, comment puis-je vous aider ?
+                        </div>
+                        <div class="message-time">Maintenant</div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" placeholder="Tapez votre message..." class="chat-input">
+                    <button id="sendMessage" class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">
+                    <img src="./Logo.jpg" alt="Logo Refrigepeche OUEST">
+                </div>
+                <h2>Refrigepeche OUEST</h2>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="accueille.html" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>ACCUEILLE</span>
+                </a>
+                <a href="present.html" class="menu-item">
+                    <i class="fas fa-user-check"></i>
+                    <span>PRESENT</span>
+                </a>
+                <a href="absent.html" class="menu-item">
+                    <i class="fas fa-user-times"></i>
+                    <span>ABSENT</span>
+                </a>
+                <a href="sortie.html" class="menu-item">
+                    <i class="fas fa-door-open"></i>
+                    <span>SORTIE</span>
+                </a>
+                <a href="HeureSup.html" class="menu-item">
+                    <i class="fas fa-clock"></i>
+                    <span>HEURE SUP</span>
+                </a>
+                <a href="retard.html" class="menu-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>RETARD</span>
+                </a>
+                <a href="employer.html" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>EMPLOYER</span>
+                </a>
+                <a href="parametre.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>PARAMETRE</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="./photo.jpg" alt="Photo utilisateur">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Sarobidy</span>
+                        <span class="user-role">Administrateur</span>
+                    </div>
+                </div>
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Contenu principal -->
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Tableau de Bord</h1>
+                <div class="header-actions">
+                    <button id="openChat" class="btn btn-primary">
+                        <i class="fas fa-comments"></i> ChatBox
+                    </button>
+                    <button id="demanderSortie" class="btn btn-warning">
+                        <i class="fas fa-door-open"></i> Demander Sortie
+                    </button>
+                    <button id="demanderHeureSup" class="btn btn-info">
+                        <i class="fas fa-clock"></i> Demander HeureSup
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Cartes de statistiques sur une ligne -->
+            <div class="stats-row">
+                <div class="stat-card present">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>PRESENT</h3>
+                        <span class="stat-number">24</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card absent">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>ABSENT</h3>
+                        <span class="stat-number">5</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card sortie">
+                    <div class="stat-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>SORTIE</h3>
+                        <span class="stat-number">3</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card heuresup">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>HEURE SUP</h3>
+                        <span class="stat-number">8</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card retard">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>RETARD</h3>
+                        <span class="stat-number">2</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Graphiques en matrice 2x2 -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Présence par département</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="deptChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <h3>Heures supplémentaires</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="hoursChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <h3>Pointage quotidien</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="dailyChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <h3>Retards</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="delayChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Liste des actions de l'entreprise -->
+            <div class="actions-section">
+                <h2>Activités Récentes</h2>
+                <div class="actions-list" id="activitiesList">
+                    <div class="action-item">
+                        <div class="action-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Jean Dupont a pointé</h4>
+                            <p>Pointage d'arrivée à 07:45</p>
+                            <span class="action-time">Il y a 2 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Marie Martin absente</h4>
+                            <p>Absence justifiée - Maladie</p>
+                            <span class="action-time">Il y a 15 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Heures supplémentaires</h4>
+                            <p>3 employés ont déclaré des heures sup</p>
+                            <span class="action-time">Il y a 1 heure</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Pierre Bernard sorti</h4>
+                            <p>Départ à 16:30 - Fin de journée</p>
+                            <span class="action-time">Il y a 2 heures</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Retard signalé</h4>
+                            <p>Antoine Petit retard de 15 minutes</p>
+                            <span class="action-time">Il y a 3 heures</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Nouvel employé</h4>
+                            <p>Sophie Thomas a rejoint l'équipe Qualité</p>
+                            <span class="action-time">Il y a 4 heures</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

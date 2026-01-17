@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heures Supplémentaires - Refrigepeche OUEST</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">
+                    <img src="./Logo.jpg" alt="Logo Refrigepeche OUEST">
+                </div>
+                <h2>Refrigepeche OUEST</h2>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="accueille.html" class="menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>ACCUEILLE</span>
+                </a>
+                <a href="present.html" class="menu-item">
+                    <i class="fas fa-user-check"></i>
+                    <span>PRESENT</span>
+                </a>
+                <a href="absent.html" class="menu-item">
+                    <i class="fas fa-user-times"></i>
+                    <span>ABSENT</span>
+                </a>
+                <a href="sortie.html" class="menu-item">
+                    <i class="fas fa-door-open"></i>
+                    <span>SORTIE</span>
+                </a>
+                <a href="HeureSup.html" class="menu-item active">
+                    <i class="fas fa-clock"></i>
+                    <span>HEURE SUP</span>
+                </a>
+                <!-- NOUVELLE OPTION RETARD -->
+                <a href="retard.html" class="menu-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>RETARD</span>
+                </a>
+                <a href="employer.html" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>EMPLOYER</span>
+                </a>
+                <a href="parametre.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>PARAMETRE</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="./photo.jpg" alt="Photo utilisateur">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Sarobidy</span>
+                        <span class="user-role">Administrateur</span>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Heures Supplémentaires</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i> Exporter
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Département</th>
+                            <th>Date</th>
+                            <th>Heures Sup</th>
+                            <th>Taux</th>
+                            <th>Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EMP001</td>
+                            <td>Dupont</td>
+                            <td>Jean</td>
+                            <td>Production</td>
+                            <td>12/03/2024</td>
+                            <td>2h</td>
+                            <td>125%</td>
+                            <td>45.00€</td>
+                        </tr>
+                        <tr>
+                            <td>EMP004</td>
+                            <td>Thomas</td>
+                            <td>Sophie</td>
+                            <td>Qualité</td>
+                            <td>12/03/2024</td>
+                            <td>1h</td>
+                            <td>125%</td>
+                            <td>22.50€</td>
+                        </tr>
+                        <tr>
+                            <td>EMP007</td>
+                            <td>Petit</td>
+                            <td>Antoine</td>
+                            <td>Logistique</td>
+                            <td>12/03/2024</td>
+                            <td>2h</td>
+                            <td>125%</td>
+                            <td>45.00€</td>
+                        </tr>
+                        <tr>
+                            <td>EMP010</td>
+                            <td>Moreau</td>
+                            <td>Catherine</td>
+                            <td>Maintenance</td>
+                            <td>12/03/2024</td>
+                            <td>3h</td>
+                            <td>150%</td>
+                            <td>81.00€</td>
+                        </tr>
+                        <tr>
+                            <td>EMP013</td>
+                            <td>Garcia</td>
+                            <td>Marc</td>
+                            <td>Production</td>
+                            <td>12/03/2024</td>
+                            <td>1h</td>
+                            <td>125%</td>
+                            <td>22.50€</td>
+                        </tr>
+                        <tr>
+                            <td>EMP016</td>
+                            <td>Roux</td>
+                            <td>Émilie</td>
+                            <td>Logistique</td>
+                            <td>12/03/2024</td>
+                            <td>2h</td>
+                            <td>125%</td>
+                            <td>45.00€</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

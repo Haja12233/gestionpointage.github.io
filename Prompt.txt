@@ -1,0 +1,43 @@
+Bonjour vous pouvez m'aidez a creer un site web GESTION DES POINTAGE, utiliser un code propre séparement pour séparer les fichiers HTML CSS JS ("accueille.html / Fichier : present.html - absent.html - sortie.html - HeureSup.html - employer.html) / parametre.html / style.css / script.js.
+
+-> Le site doit contenire :
+Un sidebar qui contient l'entete "Refrigepeche OUEST" avec son logo sous forme de cercle, et plusieur bouton ACCUEILLE (boutton "+" icone pour faire le pointage "P/A/S/HR" - PRESENT - ABSENT - SORTIE - HEURE SUPPLEMENTARE (ou HEURE SUP) - EMPLOYER - PARAMETRE - Profile du USER - DECONNECTE. N'oublier pas leur icones svp.
+
+-> Apercue du site :
+ Le grand titre "Refrigepeche OUEST" avec son logo sous forme de cercle et un appercue qui le séparer au autre boutton / des bouton : "ACCUEILLE - PRESENT - ABSENT - SORTIE - HEURE SUPPLEMENTARE (ou HEURE SUP) - EMPLOYER - PARAMETRE" et un appercue qui le séparer au autre boutton / des bouton : Profile du USER avec son image sous forme de cercle - DECONNECTE.
+-> Le fonctionnement du site :
+-- ACCUEILLE : Affiche plusieur élément comme cadre "PRESENT - ABSENT - SORTIE - HEURE SUP - EMPLOYER" avec leur nombre et leur icones dans une ligne droite ces 5 cadres et animer là. 4 graphique dans des cadres qui montrer l'événement des employer et leurs activités.
+-- PRESENT : affiche les listes des employées present lors de pointage sous forme de tableau en utilisant aussi leur matricule ou ID.
+-- ABSENT : affiche les listes des employées absent lors de pointage sous forme de tableau en utilisant aussi leur matricule ou ID.
+-- SORTIE : affiche les listes des employées sortie lors de pointage sous forme de tableau en utilisant aussi leur matricule ou ID.
+-- HEURE SUPPLEMENTARE : affiche les listes des employées qui ont fait des Heure Sup lors de pointage sous forme de tableau en utilisant aussi leur matricule ou ID.
+-- EMPLOYER : affiche les listes des employées sous forme de tableau en utilisant aussi leur matricule ou ID et tout les info concernant.
+
+-> Fonctionnement du POINTAGE :
+ Je voudrais maintenant fonctionner le pointage pour info ces un controle de pointage se deroule sur "accueille.html". Voila son fonctionnalité : le pointage commence dès que l'utilisateur a commencer se connecter au site, il va afficher le controle sous forme de notification en mentionnant le nom d'utilisateur qu'il est soit "Preset - Retard - Absent - Sortie ou fait un HeureSup" en utilisant le couleur différent puis cet notification s'affiche uniquement durant jusqu'a 2mn, le couleur vert indique que l'employer est present / le couleur rouge indique que l'employer est absent / le couleur jaune indique que l'employer est en retard / le couleur orange indique que l'employer est sortie / le couleur bleu indique que l'employer a fait un HeureSup. 
+ Le pointage est controler par l'heure, donc :
+-- Si l'utilisateur est connecter avant ou inférieur entre 7h jusqu'a 7h30mn le matin et l'apres-midi entre 13h 00mn jusqu'a 13h 30mn ou juste a l'heure demander alors il est considérer comme PRESENT et le notification s'affiche le msg d'alert en mentionnant le nom de l'utilisateur qu'il est Present. 
+-- Si l'utilisateur est connecter a supperieur entre 8h 00mn jusqu'a 12h 00mn et l'apres-midi a 14h 00mn jusqu'a 18h 00mn et le notification s'affiche le msg d'alert en mentionnant le nom de l'utilisateur qu'il est en Retard, s'il connecter qu'entre ces lapse temps alors il est considérer comme RETARD.
+-- Si l'utilisateur est n'est pas connecter tous simple jusqu'au 12h le mation et l'apres-midi jusqu'a 18h alors il est considérer comme ABSENT.
+-- Si l'utilisateur decide de sortire alors entre l'heure du travail de 7h a 12h le matin et 14h a 18h l'apres-midi, il va d'abord demander la permission en consultant le "ChatBox" qui est un endroit pour discuter avec l'administrateur puis s'il l'approuve alors une notification s'affiche le msg d'alert en mentionnant le nom de l'utilisateur qu'il peuvent Sortire.
+-- Si l'utilisateur decide de faire un Heure Sup alors il va aussi d'abord demander la permission en consultant le "ChatBox" qui est un endroit pour discuter avec l'administrateur puis s'il l'approuve alors une notification s'affiche le msg d'alert en mentionnant le nom de l'utilisateur qu'il peuvent faire un HeureSup.
+
+NB: Chacune de ces ACTION sont enregistrer et afficher dans le TB de l'accueille.
+
+
+
+Commentaire :
+//*
+
+est ce que ces juste???? Vous ne pouvez pas plutot transformer les compte demo sur la meme ligne droite et utiliser un pagination svp
+
+Je voudrais transformer le modale de signin svp comme "Défilement de contenu long" comme Lorsque les fenêtres modales deviennent trop longues pour l'écran ou l'appareil de l'utilisateur, elles défilent indépendamment de la page. Et les compte démo se scroule automatiquement sans l'aide de bouton pagination.
+
+*//
+
+
+
+Maintenant je veux que vous transformer tout ce qu'on a fait jusqu'à maintenant ou cette fichier en Application WEB sans oublier une seule code et je veux la meme nom du fichier et dossier que le precedent code et previent moi ou fait moi une liste des changement en avance si vous voulez ajouter d'autre fichier ou modifier juste le nom du fichier svp, je veux utiliser PHP et le Base de Donnée est PHP MySQL, le site et BD sont lier donc tout modification dans la BD aurait une grande changement dans l'Application WEB.
+Dans la BD je voudrais voir :
+-- Les Liste = PRESENT - RETARD - ABSENT - SORTIE - HEURE SUPPLEMENTARE (ou HEURE SUP) - EMPLOYE.
+-- Société / Département / Service / Employé / Fonction / Qualification sont tout des BD qui se relie. Voilà comment ca marche : 1 "Société" peut avoir 1 ou Plusieur "Département", puis 1 "Département" peut avoir 1 ou Plusieur "Service", puis 1 "Service" peut avoir 1 ou Plusieur "Employé", puis 1 ou plusieur "Employé" peut avoir soit 1 "Fonction" soit 1 "Qualification".

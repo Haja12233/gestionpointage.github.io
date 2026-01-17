@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigepeche OUEST | Solution de Pointage Intelligent</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            overflow-x: hidden;
+        }
+
+        /* --- GÉNÉRAL --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        .landing-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .landing-nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-logo i {
+            color: var(--accent);
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* --- HEADER --- */
+        .landing-header {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(59, 130, 246, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            color: white;
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .landing-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .landing-header p {
+            font-size: 1.375rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- SECTION FONCTIONNALITÉS --- */
+        .features-section {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* --- SECTION ÉQUIPE --- */
+        .team-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            position: relative;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-photo {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .member-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.375rem;
+            font-weight: 700;
+        }
+
+        .member-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .member-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- SECTION STATISTIQUES --- */
+        .stats-section {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item h3 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .stat-item p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* --- SECTION À PROPOS --- */
+        .about-section {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+            color: var(--text);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--light);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .value-item h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.375rem;
+            font-weight: 700;
+        }
+
+        .value-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- SECTION CTA --- */
+        .cta-section {
+            background: var(--gradient-dark);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .cta-section p {
+            font-size: 1.375rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .demo-section {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .demo-title {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .demo-subtitle {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .demo-accounts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .demo-account {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-account:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .demo-account img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .demo-account-info {
+            text-align: left;
+        }
+
+        .demo-account-info strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .demo-account-info span {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about {
+            max-width: 400px;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- MODALES --- */
+        .modal-demo-accounts {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .modal-demo-accounts::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-demo-accounts::-webkit-scrollbar-track {
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .modal-demo-accounts::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .modal-demo-accounts::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        .demo-account-modal {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem;
+            background: linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(245,247,250,0.98) 100%);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-account-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .demo-account-modal:hover::before {
+            left: 100%;
+        }
+
+        .demo-account-modal:hover {
+            border-color: rgba(37,99,235,0.15);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(2,6,23,0.08);
+        }
+
+        .demo-account-modal:last-child {
+            margin-bottom: 0;
+        }
+
+        .demo-account-modal img {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            margin-right: 1rem;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+            flex-shrink: 0;
+        }
+
+        .demo-account-info-modal {
+            flex: 1;
+            text-align: left;
+        }
+
+        .demo-account-info-modal strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .demo-account-info-modal span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .demo-account-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .demo-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .demo-section-title i {
+            color: var(--accent);
+        }
+
+        /* Animation de chargement */
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Amélioration du séparateur */
+        .modal-separator {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .modal-separator::before,
+        .modal-separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .modal-separator::before {
+            margin-right: 1rem;
+        }
+
+        .modal-separator::after {
+            margin-left: 1rem;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none; /* toggled with .is-open */
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.28s cubic-bezier(.2,.9,.3,1);
+            padding: 2rem;
+        }
+
+        /* BEM-like modifier to show modal */
+        .modal-overlay.is-open {
+            display: flex;
+        }
+
+        /* small utility for screen-reader-only text */
+        .sr-only {
+            position: absolute !important;
+            height: 1px; width: 1px;
+            overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap; border: 0; padding: 0; margin: -1px;
+        }
+
+
+        /* Modal layout that supports long scrollable content */
+        .modal-content {
+            background: white;
+            /* Make modal use column layout so header/footer can be sticky while body scrolls */
+            display: flex;
+            flex-direction: column;
+            padding: 0; /* header/body provide their own padding */
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            max-width: 540px;
+            max-height: calc(100vh - 3rem);
+            animation: scaleUp 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* polished backdrop and modal transition */
+        .modal-overlay {
+            background: linear-gradient(180deg, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.85) 100%);
+            backdrop-filter: blur(8px) saturate(120%);
+        }
+
+        .modal-content {
+            transform: translateY(8px);
+            transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms;
+        }
+
+        .modal-overlay.is-open .modal-content {
+            transform: translateY(0) scale(1);
+            box-shadow: 0 30px 60px rgba(2,6,23,0.45);
+        }
+
+        /* Header stays visible while the body scrolls */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid var(--border);
+            background: white; /* ensures sticky header covers content behind */
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            flex: 0 0 auto;
+        }
+
+        .modal-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.18s ease;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: none;
+        }
+
+        .close-modal:hover {
+            background: rgba(15,23,42,0.03);
+            color: var(--primary);
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .modal-header .modal-title-group {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .modal-header .modal-header-icon {
+            background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(59,130,246,0.95));
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.125rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .modal-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* refined form controls inside modals */
+        .modal-body input {
+            background: #fbfdff;
+            border: 1px solid rgba(15,23,42,0.06);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .modal-body input:focus {
+            border-color: rgba(37,99,235,0.9);
+            box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+        }
+
+        .btn-primary {
+            border-radius: 12px;
+            padding: 0.85rem 1.25rem;
+            font-size: 1rem;
+        }
+
+        .btn-outline {
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        /* Modal body: scrollable area for long content */
+        .modal-body {
+            padding: 1.5rem 1.75rem 2rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            flex: 1 1 auto; /* allow body to grow/shrink and scroll inside modal */
+        }
+
+        /* Optional footer (sticky) if needed */
+        .modal-footer {
+            padding: 1rem 1.75rem;
+            border-top: 1px solid var(--border);
+            background: white;
+            position: sticky;
+            bottom: 0;
+            z-index: 2;
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            flex: 0 0 auto;
+        }
+
+        /* Make scrollbars in modal body subtle */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(51,65,85,0.12);
+            border-radius: 8px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--light);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .modal-body button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .demo-section-modal {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .demo-section-modal h4 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        #demoAccountsModal {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #demoAccountsModal .demo-account {
+            background: var(--light);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        #demoAccountsModal .demo-account:hover {
+            background: #e2e8f0;
+        }
+
+        #demoAccountsModal .demo-account-info span {
+            color: var(--text-light);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .landing-header h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .landing-header {
+                padding: 140px 0 80px;
+            }
+            
+            .landing-header h1 {
+                font-size: 2.75rem;
+            }
+            
+            .landing-header p {
+                font-size: 1.25rem;
+            }
+            
+            .section-title {
+                font-size: 2.25rem;
+            }
+            
+            .features-grid,
+            .team-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-about {
+                margin: 0 auto;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .demo-accounts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .landing-header h1 {
+                font-size: 2.25rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                padding: 2rem;
+            }
+            
+            .feature-card,
+            .team-member,
+            .value-item {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="landing-nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">
+                    <i class="fas fa-fish"></i>
+                    Refrigepeche OUEST
+                </a>
+                <div class="nav-buttons">
+                    <button id="openLogin" class="btn btn-outline">
+                        <i class="fas fa-sign-in-alt"></i> Connexion
+                    </button>
+                    <button id="openSignin" class="btn btn-accent">
+                        <i class="fas fa-user-plus"></i> Inscription
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="landing-header">
+        <div class="container">
+            <h1 class="fade-in-up">Révolutionnez votre Gestion du Personnel</h1>
+            <p class="fade-in-up">Notre système de pointage intelligent optimise la productivité et simplifie la gestion des présences pour les entreprises modernes.</p>
+            <div class="cta-buttons fade-in-up">
+                <button id="openLogin2" class="btn btn-accent">
+                    <i class="fas fa-play-circle"></i> Démarrer l'expérience
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-video"></i> Voir la démo
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section features-section">
+        <div class="container">
+            <h2 class="section-title">Fonctionnalités Intelligentes</h2>
+            <p class="section-subtitle">Découvrez comment notre solution transforme la gestion du temps de travail avec des outils modernes et efficaces</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Pointage Automatique</h3>
+                    <p>Détection intelligente de la présence selon les horaires définis, éliminant les erreurs manuelles et les oublis.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Gestion des Retards</h3>
+                    <p>Surveillance en temps réel avec notifications automatiques et analyses détaillées pour une gestion proactive.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>Sorties Autorisées</h3>
+                    <p>Workflow simplifié pour les demandes de sortie avec validation en temps réel via chat intégré.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Analyses Avancées</h3>
+                    <p>Tableaux de bord complets avec métriques en temps réel et rapports personnalisables par département.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Communication Intégrée</h3>
+                    <p>Système de messagerie instantanée pour une communication fluide entre collaborateurs et administration.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Multi-Plateforme</h3>
+                    <p>Interface responsive optimisée pour tous les appareils : desktop, tablette et mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section team-section">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe d'Experts</h2>
+            <p class="section-subtitle">Rencontrez les professionnels dédiés à l'innovation et à l'excellence opérationnelle</p>
+            <div class="team-grid">
+                <div class="team-member fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PDG" class="member-photo">
+                    <div class="member-info">
+                        <h3>Jean-Luc Martin</h3>
+                        <span class="member-role">PDG & Fondateur</span>
+                        <p class="member-description">Visionnaire avec plus de 20 ans d'expérience dans l'industrie de la pêche et de la transformation.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Directrice RH" class="member-photo">
+                    <div class="member-info">
+                        <h3>Marie Dubois</h3>
+                        <span class="member-role">Directrice des Ressources Humaines</span>
+                        <p class="member-description">Spécialiste en gestion du personnel avec une expertise en développement des compétences et bien-être au travail.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Directeur Technique" class="member-photo">
+                    <div class="member-info">
+                        <h3>Pierre Lambert</h3>
+                        <span class="member-role">Directeur Technique</span>
+                        <p class="member-description">Ingénieur passionné par l'innovation technologique et l'optimisation des processus industriels.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Directeur Technique" class="member-photo">
+                    <div class="member-info">
+                        <h3>RABEMANANTSOA Eddy Florentin Kazary</h3>
+                        <span class="member-role">Responsable Informatique et Technicien</span>
+                        <p class="member-description">Professionnels sur l'innovation technologique et l'optimisation Digitale.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Directeur Technique" class="member-photo">
+                    <div class="member-info">
+                        <h3>ANTENAINA Mampirindra </h3>
+                        <span class="member-role">Responsable des Réseau Informatique</span>
+                        <p class="member-description">Spécialiste en gestion du Réseau Informatique.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in-up">
+                    <img src="./img/Sarobidy.jpg" alt="Directeur Technique" class="member-photo">
+                    <div class="member-info">
+                        <h3>Andrianiriana Fanomezantsoa Sarobidy</h3>
+                        <span class="member-role">Stagiaire Informatique</span>
+                        <p class="member-description">Developpeur WEB passionné par l'innovation technologique et l'optimisation des matériele Informatique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title" style="-webkit-text-fill-color: white; background: transparent;">Impact Mesurable</h2>
+            <p class="section-subtitle">Des résultats concrets qui transforment la gestion de votre entreprise</p>
+            <div class="stats-grid">
+                <div class="stat-item fade-in-up">
+                    <h3>98%</h3>
+                    <p>Précision du pointage</p>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <h3>-45%</h3>
+                    <p>Réduction des retards</p>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <h3>24/7</h3>
+                    <p>Disponibilité du système</p>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <h3>300+</h3>
+                    <p>Employés satisfaits</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">Notre Histoire</h2>
+            <p class="section-subtitle">De l'innovation à l'excellence : notre parcours vers la transformation digitale</p>
+            <div class="about-content">
+                <p class="about-text fade-in-up">
+                    Fondée en 1995, Refrigepeche OUEST s'est imposée comme un acteur majeur dans le secteur de la pêche et de la transformation des produits de la mer. 
+                    Notre engagement constant pour l'innovation nous a conduit à développer cette solution de pointage intelligent, spécialement conçue pour répondre 
+                    aux défis uniques de notre industrie et au-delà.
+                </p>
+                <div class="values-grid">
+                    <div class="value-item fade-in-up">
+                        <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+                        <h4>Notre Mission</h4>
+                        <p>Révolutionner la gestion du personnel grâce à des solutions technologiques innovantes, adaptées et accessibles.</p>
+                    </div>
+                    <div class="value-item fade-in-up">
+                        <div class="value-icon"><i class="fas fa-eye"></i></div>
+                        <h4>Notre Vision</h4>
+                        <p>Devenir le leader incontournable des solutions de gestion RH dans l'industrie agroalimentaire mondiale.</p>
+                    </div>
+                    <div class="value-item fade-in-up">
+                        <div class="value-icon"><i class="fas fa-heart"></i></div>
+                        <h4>Nos Valeurs</h4>
+                        <p>Innovation, qualité, transparence et engagement envers l'excellence opérationnelle et le bien-être au travail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="fade-in-up">Prêt à révolutionner votre gestion du personnel ?</h2>
+            <p class="fade-in-up">Rejoignez les centaines d'entreprises qui optimisent déjà leurs processus avec notre système intelligent</p>
+            <div class="cta-buttons fade-in-up">
+                <button id="openLogin3" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Démarrer gratuitement
+                </button>
+            </div>
+            
+            <div class="demo-section fade-in-up">
+                <h4 class="demo-title">Comptes de Démonstration</h4>
+                <p class="demo-subtitle">Cliquez sur un compte pour découvrir instantanément les fonctionnalités de notre plateforme</p>
+                <div class="demo-accounts-container" id="demoAccounts">
+                    <!-- Les comptes seront générés dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-fish"></i> Refrigepeche OUEST
+                    </div>
+                    <p>
+                        Votre partenaire de confiance pour des solutions de gestion du personnel modernes, efficaces et innovantes. 
+                        Transformez votre entreprise avec nos outils digitaux de pointe.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#features">Fonctionnalités</a></li>
+                        <li><a href="#team">Notre Équipe</a></li>
+                        <li><a href="#about">À Propos</a></li>
+                        <li><a href="#">Tarifs</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Pointage Automatique</a></li>
+                        <li><a href="#">Gestion des Absences</a></li>
+                        <li><a href="#">Analyses RH</a></li>
+                        <li><a href="#">Communication Interne</a></li>
+                        <li><a href="#">Formations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Refrigepeche OUEST. Tous droits réservés. | <a href="#" style="color: rgba(255,255,255,0.6);">Mentions légales</a> | <a href="#" style="color: rgba(255,255,255,0.6);">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <div id="loginModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-header-icon" aria-hidden="true"><i class="fas fa-sign-in-alt"></i></span>
+                    <div>
+                        <h3 id="loginModalTitle">Connexion</h3>
+                        <div class="modal-subtitle">Accédez à votre espace sécurisé</div>
+                    </div>
+                </div>
+                <button class="close-modal" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Adresse email</label>
+                        <input type="email" id="loginEmail" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mot de passe</label>
+                        <input type="password" id="loginPassword" placeholder="Votre mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Se connecter
+                    </button>
+                </form>
+                <!-- Remplacez la section des comptes de démonstration dans la modale Login -->
+                <div class="demo-section-modal">
+                    <div class="modal-separator">Ou connectez-vous avec un compte de démonstration</div>
+                    
+                    <div class="demo-section-title">
+                        <i class="fas fa-users"></i>
+                        <span>Comptes de démonstration</span>
+                    </div>
+                    
+                    <div class="modal-demo-accounts" id="demoAccountsModal">
+                        <!-- Les comptes seront générés dynamiquement -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline close-modal">Annuler</button>
+                <a href="#" class="btn" style="color:var(--text-light);align-self:center;text-decoration:none;font-size:0.95rem;">Mot de passe oublié ?</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="signinModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="signinModalTitle" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-header-icon" aria-hidden="true"><i class="fas fa-user-plus"></i></span>
+                    <div>
+                        <h3 id="signinModalTitle">Créer un compte</h3>
+                        <div class="modal-subtitle">Rejoignez-nous — rapide et sécurisé</div>
+                    </div>
+                </div>
+                <button class="close-modal" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="signinForm">
+                    <div class="form-group">
+                        <label for="signinName">Nom complet</label>
+                        <input type="text" id="signinName" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signinEmail">Adresse email</label>
+                        <input type="email" id="signinEmail" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signinPassword">Mot de passe</label>
+                        <input type="password" id="signinPassword" placeholder="Créez un mot de passe sécurisé" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signinConfirmPassword">Confirmer le mot de passe</label>
+                        <input type="password" id="signinConfirmPassword" placeholder="Confirmez votre mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Créer mon compte
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline close-modal">Annuler</button>
+                <button type="submit" form="signinForm" class="btn btn-primary"><i class="fas fa-user-plus"></i> Créer</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DONNÉES DE DÉMONSTRATION ---
+            const demoUsers = [
+                { 
+                    role: 'Administrateur', 
+                    email: 'admin@refrigepeche.fr', 
+                    password: 'admin123',
+                    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+                },
+                { 
+                    role: 'Manager', 
+                    email: 'manager@refrigepeche.fr', 
+                    password: 'manager123',
+                    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+                },
+                { 
+                    role: 'Employé', 
+                    email: 'employe@refrigepeche.fr', 
+                    password: 'employe123',
+                    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+                }
+            ];
+
+            // --- (les comptes de démonstration sont créés plus bas de façon centralisée) ---
+
+            // Modifiez la fonction de gestion de la connexion pour la redirection
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Afficher l'indicateur de chargement
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner loading-spinner" style="display: inline-block;"></i> Connexion...';
+                submitBtn.disabled = true;
+                
+                // Simulation de connexion réussie
+                setTimeout(() => {
+                    const validUser = demoUsers.find(user => user.email === email && user.password === password);
+                    if (validUser) {
+                        // Ajouter une animation de succès
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Connexion réussie !';
+                        submitBtn.style.background = 'var(--accent)';
+                        
+                        // Redirection vers accueil.html après 1 seconde
+                        setTimeout(() => {
+                            window.location.href = 'accueille.html';
+                        }, 1000);
+                    } else {
+                        // Réinitialiser le bouton
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Animation d'erreur
+                        submitBtn.style.animation = 'shake 0.5s ease-in-out';
+                        setTimeout(() => {
+                            submitBtn.style.animation = '';
+                        }, 500);
+                        
+                        alert('Email ou mot de passe incorrect. Utilisez un compte de démonstration.');
+                    }
+                }, 1500); // Simuler un délai de connexion
+            });
+
+            // Ajoutez l'animation de secousse pour les erreurs
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-5px); }
+                    75% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // --- LOGIQUE D'OUVERTURE/FERMETURE DES MODALES (ACCESSIBLE) ---
+            const loginModal = document.getElementById('loginModal');
+            const signinModal = document.getElementById('signinModal');
+            const openLoginButtons = document.querySelectorAll('#openLogin, #openLogin2, #openLogin3');
+            const openSigninButton = document.getElementById('openSignin');
+            const closeButtons = document.querySelectorAll('.close-modal');
+
+            let lastFocusedElement = null;
+            let activeModal = null;
+
+            const getFocusableElements = (container) => {
+                return Array.from(container.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+            };
+
+            const trapTabKey = (e) => {
+                if (!activeModal) return;
+                if (e.key !== 'Tab') return;
+                const focusable = getFocusableElements(activeModal);
+                if (focusable.length === 0) {
+                    e.preventDefault();
+                    return;
+                }
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            };
+
+            const openModal = (modal) => {
+                if (!modal) return;
+                lastFocusedElement = document.activeElement;
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                activeModal = modal.querySelector('.modal-content') || modal;
+                const focusable = getFocusableElements(activeModal);
+                if (focusable.length) focusable[0].focus();
+                window.addEventListener('keydown', handleKeyDown);
+            };
+
+            const closeModal = (modal) => {
+                if (!modal) return;
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+                activeModal = null;
+                if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+                window.removeEventListener('keydown', handleKeyDown);
+            };
+
+            const handleKeyDown = (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal-overlay.is-open').forEach(m => closeModal(m));
+                }
+                trapTabKey(e);
+            };
+
+            openLoginButtons.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); renderDemoAccountsInModal(3); openModal(loginModal); }));
+            openSigninButton && openSigninButton.addEventListener('click', (e) => { e.preventDefault(); openModal(signinModal); });
+            closeButtons.forEach(btn => btn.addEventListener('click', (e) => closeModal(e.target.closest('.modal-overlay'))));
+
+            // close on overlay click
+            window.addEventListener('click', (e) => {
+                if (e.target.classList && e.target.classList.contains('modal-overlay')) {
+                    closeModal(e.target);
+                }
+            });
+
+            // --- REMPLISSAGE AUTO DES FORMULAIRES DE DÉMO & GÉNÉRATION ---
+            const demoAccountsModalContainer = document.getElementById('demoAccountsModal');
+            const demoAccountsContainer = document.getElementById('demoAccounts');
+
+            const createDemoAccountElement = (user, forModal = false) => {
+                const div = document.createElement('div');
+                div.className = forModal ? 'demo-account-modal' : 'demo-account';
+                div.dataset.email = user.email;
+                div.dataset.password = user.password;
+                div.tabIndex = 0; // keyboard-focusable
+                if (forModal) {
+                    div.innerHTML = `
+                        <img src="${user.img}" alt="${user.role}" loading="lazy">
+                        <div class="demo-account-info-modal">
+                            <strong>${user.role}</strong>
+                            <span>${user.email}</span>
+                            <div class="demo-account-badge">Cliquez pour tester</div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: var(--text-light);"></i>
+                    `;
+                } else {
+                    div.innerHTML = `
+                        <img src="${user.img}" alt="${user.role}" loading="lazy">
+                        <div class="demo-account-info">
+                            <strong>${user.role}</strong>
+                            <span>${user.email}</span>
+                        </div>
+                    `;
+                }
+                const activate = () => populateLoginForm(user.email, user.password);
+                div.addEventListener('click', activate);
+                div.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(); } });
+                return div;
+            };
+
+            const populateLoginForm = (email, password) => {
+                document.getElementById('loginEmail').value = email;
+                document.getElementById('loginPassword').value = password;
+                openModal(loginModal);
+            };
+
+            // inject demo accounts on the page (modal list will be rendered on demand)
+            if (demoAccountsContainer) {
+                demoUsers.forEach(user => demoAccountsContainer.appendChild(createDemoAccountElement(user, false)));
+            }
+
+            // Render exactly N demo accounts inside the login modal (called when opening)
+            const renderDemoAccountsInModal = (count = 3) => {
+                if (!demoAccountsModalContainer) return;
+                demoAccountsModalContainer.innerHTML = ''; // clear
+                demoUsers.slice(0, count).forEach(user => demoAccountsModalContainer.appendChild(createDemoAccountElement(user, true)));
+            };
+
+            // --- NAVIGATION QUI CHANGE AU DÉFILEMENT ---
+            const nav = document.querySelector('.landing-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // --- ANIMATION AU DÉFILEMENT (INTERSECTION OBSERVER) ---
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // --- GESTION DES FORMULAIRES ---
+            // Le formulaire de connexion principal utilise déjà une simulation de chargement
+            // (déjà défini plus haut). On gère ici uniquement l'inscription.
+            document.getElementById('signinForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const password = document.getElementById('signinPassword').value;
+                const confirmPassword = document.getElementById('signinConfirmPassword').value;
+                if (password !== confirmPassword) {
+                    alert('Les mots de passe ne correspondent pas.');
+                    return;
+                }
+                alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+                closeModal(signinModal);
+            });
+
+            // Effet de particules subtil pour le header
+            const header = document.querySelector('.landing-header');
+            if (header) {
+                for (let i = 0; i < 20; i++) {
+                    const dot = document.createElement('div');
+                    dot.style.cssText = `
+                        position: absolute;
+                        width: 2px;
+                        height: 2px;
+                        background: rgba(255,255,255,0.5);
+                        border-radius: 50%;
+                        top: ${Math.random() * 100}%;
+                        left: ${Math.random() * 100}%;
+                        animation: float 15s infinite linear;
+                        animation-delay: ${Math.random() * 15}s;
+                    `;
+                    header.appendChild(dot);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
